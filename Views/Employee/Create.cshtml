@@ -1,0 +1,95 @@
+﻿@model WebApplication3.Models.Employee
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4" style="background-color: #f8f9fa;">
+        <h2 class="mb-4 text-primary text-center">
+            <i class="fas fa-user-plus me-2"></i>Create New Employee
+        </h2>
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label asp-for="EmpFirstName" class="form-label"><i class="fas fa-user"></i> First Name</label>
+                    <input asp-for="EmpFirstName" class="form-control" placeholder="Enter first name" />
+                    <span asp-validation-for="EmpFirstName" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="EmpLastName" class="form-label"><i class="fas fa-user"></i> Last Name</label>
+                    <input asp-for="EmpLastName" class="form-control" placeholder="Enter last name" />
+                    <span asp-validation-for="EmpLastName" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="EmailId" class="form-label"><i class="fas fa-envelope"></i> Email</label>
+                    <input asp-for="EmailId" class="form-control" placeholder="Enter email" />
+                    <span asp-validation-for="EmailId" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="BirthDate" class="form-label"><i class="fas fa-calendar"></i> Birth Date</label>
+                    <input asp-for="BirthDate" class="form-control" type="date" />
+                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="EmpGender" class="form-label"><i class="fas fa-venus-mars"></i> Gender</label>
+                    <input asp-for="EmpGender" class="form-control" placeholder="Male / Female / Other" />
+                    <span asp-validation-for="EmpGender" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="EmpPhoneNumber" class="form-label"><i class="fas fa-phone"></i> Phone</label>
+                    <input asp-for="EmpPhoneNumber" class="form-control" placeholder="Enter phone number" />
+                    <span asp-validation-for="EmpPhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Salary" class="form-label"><i class="fas fa-money-bill-wave"></i> Salary</label>
+                    <input asp-for="Salary" class="form-control" placeholder="Enter salary" />
+                    <span asp-validation-for="Salary" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="DeptId" class="form-label"><i class="fas fa-building"></i> Department</label>
+                    <select asp-for="DeptId" class="form-select" asp-items="ViewBag.DeptId">
+                        <option value="">-- Select Department --</option>
+                    </select>
+                    <span asp-validation-for="DeptId" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 d-flex align-items-center mt-3">
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="EmpStatus" />
+                        <label class="form-check-label">
+                            <i class="fas fa-toggle-on me-1"></i>@Html.DisplayNameFor(model => model.EmpStatus)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 text-center">
+                <button type="submit" class="btn btn-success px-4">
+                    <i class="fas fa-plus-circle me-2"></i>Create
+                </button>
+                <a asp-action="Index" class="btn btn-secondary ms-3">
+                    <i class="fas fa-arrow-left me-1"></i>Back to List
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

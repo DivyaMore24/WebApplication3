@@ -1,0 +1,131 @@
+﻿@model IEnumerable<WebApplication3.Models.Employee>
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    body {
+        background-image: url('/images/background.jpg'); /* Make sure to place this image in wwwroot/images/ */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+        color: #ffffff;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 4px #000;
+    }
+
+    .content-container {
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 30px;
+        border-radius: 15px;
+        margin: 40px auto;
+        max-width: 1200px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    table.table {
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+
+    th, td {
+        text-align: center;
+    }
+
+    a.btn {
+        margin: 2px;
+        padding: 6px 10px;
+        font-weight: bold;
+    }
+
+    a.btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: white;
+    }
+
+    a.btn-danger {
+        background-color: #dc3545;
+        border: none;
+        color: white;
+    }
+
+    a.btn:hover {
+        opacity: 0.85;
+        transform: scale(1.05);
+        transition: 0.2s ease-in-out;
+    }
+
+    p a {
+        font-weight: bold;
+        font-size: 16px;
+        color: #28a745;
+        text-decoration: none;
+    }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="content-container" style="background: rgba(255, 255, 255, 0.85); padding: 20px; border-radius: 10px;">
+    <h1 class="text-center text-primary mb-4">Employee List</h1>
+
+    <p class="text-end">
+        <a asp-action="Create" class="btn btn-success">Create New</a>
+    </p>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.EmpFirstName)</th>
+                    <th>@Html.DisplayNameFor(model => model.EmpLastName)</th>
+                    <th>@Html.DisplayNameFor(model => model.EmailId)</th>
+                    <th>@Html.DisplayNameFor(model => model.BirthDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.EmpGender)</th>
+                    <th>@Html.DisplayNameFor(model => model.EmpPhoneNumber)</th>
+                    <th>@Html.DisplayNameFor(model => model.Salary)</th>
+                    <th>@Html.DisplayNameFor(model => model.EmpStatus)</th>
+                    <th>@Html.DisplayNameFor(model => model.Department)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.EmpFirstName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EmpLastName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EmailId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BirthDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EmpGender)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EmpPhoneNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Salary)</td>
+                        <td>@(item.EmpStatus ? "Active" : "Inactive")</td>
+                        <td>@Html.DisplayFor(modelItem => item.Department.DeptName)</td>
+                        <td class="text-nowrap">
+                            <a asp-action="Edit" asp-route-id="@item.EmpId" class="btn btn-sm btn-primary">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.EmpId" class="btn btn-sm btn-info">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.EmpId" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
