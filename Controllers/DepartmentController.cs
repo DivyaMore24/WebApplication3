@@ -23,7 +23,7 @@ namespace WebApplication3.Controllers
             return View(deptList);
         }
 
-        [Route("create")]
+        
         [HttpGet]
         public IActionResult Create()
         {
@@ -41,7 +41,7 @@ namespace WebApplication3.Controllers
             }
             return View(department);
         }
-
+        //Attribute routing
         [Route("edit")]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
@@ -70,7 +70,7 @@ namespace WebApplication3.Controllers
             return View(department);
         }
 
-        [Route("details")]
+       
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {

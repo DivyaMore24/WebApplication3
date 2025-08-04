@@ -1,8 +1,59 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    ViewData["BodyClass"] = "background";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<style>
+    body.home-bg {
+        background-image: url('/images/background.png');
+        background-size: cover;
+    }
+
+    .hero-section {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        padding: 50px 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        margin-top: 60px;
+    }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #004085;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            color: #333;
+        }
+
+    .btn-group-home .btn {
+        margin: 10px;
+        padding: 12px 25px;
+        font-size: 1.1rem;
+    }
+</style>
+
+<div class="container home-bg">
+    <div class="hero-section text-center">
+        <h1 class="mb-4"><i class="fas fa-briefcase me-2"></i>Welcome to Employee Management System</h1>
+        <p class="lead mb-4">
+            This web application helps you manage employee and department data effectively. You can create, edit, view, and delete employee and department records with ease.
+        </p>
+        <p class="mb-4">
+            Built with <strong>ASP.NET Core MVC</strong> and styled using <strong>Bootstrap 5</strong>, this system ensures a modern and responsive interface for HR professionals and administrators.
+        </p>
+
+        <div class="btn-group-home">
+            <a asp-controller="Employee" asp-action="Index" class="btn btn-primary">
+                <i class="fas fa-users me-1"></i> Manage Employees
+            </a>
+            <a asp-controller="Department" asp-action="Index" class="btn btn-success">
+                <i class="fas fa-building me-1"></i> Manage Departments
+            </a>
+        </div>
+    </div>
 </div>
